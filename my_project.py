@@ -96,3 +96,16 @@ print('Dataset with categorical values encoded')
 print(df)
 
 #Splitting dataset into features and target variables
+target= df['Price_in_thousands']
+features = df.drop(['Price_in_thousands'],axis = 1) 
+
+#Feature importance
+from sklearn.ensemble import ExtraTreesRegressor
+model = ExtraTreesRegressor()
+model.fit(features,target)
+#plotting the feature importance
+
+feat_importances = pd.Series(model.feature_importances_, index=features.columns)
+feat_importances.nlargest(10).plot(kind='barh')
+plt.title('Feature importance for the highest 10 variables')
+plt.show()
