@@ -1,8 +1,16 @@
 # importing necessary libraries
 
+<<<<<<< HEAD
 import numpy as np # linear algebra
 import pandas as pd # data processing and preparation
 import matplotlib.pyplot as plt # Visualization
+=======
+
+import numpy as np # linear algebra
+import pandas as pd # data processing and preparation
+import matplotlib.pyplot as plt # Visualization
+import seaborn as sns # Visualization on top of matplotlib
+>>>>>>> 07f8199deb4acf626c4604de082f1a06b762f143
 import matplotlib
 import seaborn as sns # Advanced visualization
 
