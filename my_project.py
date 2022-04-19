@@ -127,3 +127,6 @@ x_train,x_test,y_train,y_test = train_test_split(input_scaled,target,test_size =
 from sklearn.linear_model import LinearRegression
 model = LinearRegression()
 model.fit(x_train,y_train)
+
+#predict the values for the training dataset
+y_pred = model.predict(x_train)
