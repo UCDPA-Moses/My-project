@@ -162,7 +162,7 @@ regressor=RFC() # creating a random forest regressor model
 regressor.fit(x_train,y_train)
 
 # Performance Metrics of the training set
-print("Random forest regressor accuracy is {:.2f}%".format(model.score(x_train, y_train) *100))
+print("Random forest regressor accuracy is {:.2f}%".format(regressor.score(x_train, y_train) *100))
 
 predictions=regressor.predict(x_test)
 
