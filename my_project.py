@@ -144,14 +144,35 @@ print("Linear regression accuracy is {:.2f}%".format(model.score(x_train, y_trai
 y_pred_test = model.predict(x_test)
 
 plt.scatter(y_test,y_pred_test)
-plt.title('Predicting target values from the feature values',size = 25)
+plt.title('Linear Regression: Predicting target values from the feature values',size = 25)
 plt.xlabel("Targets (y_test)", size = 18)
 plt.ylabel("Predictions (y_pred_test)", size = 18)
 plt.show()
 
-from sklearn.metrics import r2_score
+from sklearn.metrics import r2_score, mean_absolute_error,mean_squared_error
 print("R_square value is: ", r2_score(y_test,y_pred_test))
-
-from sklearn.metrics import mean_squared_error
 print("MSE is: ", mean_squared_error(y_test,y_pred_test))
 print("RMSE is: ", np.sqrt(mean_squared_error(y_test,y_pred_test)))
+
+#Building a Random Forest model
+
+from sklearn.ensemble import RandomForestRegressor as RFC
+
+regressor=RFC() # creating a random forest regressor model
+regressor.fit(x_train,y_train)
+
+# Performance Metrics of the training set
+print("Random forest regressor accuracy is {:.2f}%".format(model.score(x_train, y_train) *100))
+
+predictions=regressor.predict(x_test)
+
+plt.scatter(y_test,predictions)
+plt.title('Random Forest: Predicting target values from the feature values',size = 25)
+plt.xlabel("Targets (y_test)", size = 18)
+plt.ylabel("Predictions (y_pred_test)", size = 18)
+plt.show()
+
+#  Performance Metrics
+print("R_square value is: ", r2_score(y_test,predictions))
+print('MSE:', mean_squared_error(y_test, predictions))
+print('RMSE:', np.sqrt(mean_squared_error(y_test, predictions)))
