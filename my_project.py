@@ -37,6 +37,10 @@ df.fillna(df.mean(),inplace=True)
 total_missing=df.isna().sum().sum() #checking for missing values in the dataset
 print("Total missing values are:", total_missing)
 
+#checking null values
+print('null values in each column is:')
+print(df.isnull().sum())
+
 # Sorting all the data in the dataset with respexct to Engine size
 df_sorted = df.sort_values(by = 'Engine_size', ascending = False) #sorting the data by Engine size
 print("sorting the data by Engine size")
@@ -51,9 +55,12 @@ categories_avail = df.groupby('Manufacturer').size()
 print("The different categories / manufacturers of cars in this dataset are:")
 print(categories_avail)
 
+print("Categories of cars based on the vehicle type")
+categories_avail2= df.groupby('Vehicle_type').size()
+print(categories_avail2)
 
 #Formatting the default setting the charts and graphs
-sns.set_style('darkgrid')
+sns.set_style('whitegrid')
 matplotlib.rcParams['font.size'] =8
 matplotlib.rcParams['figure.figsize'] = (10,6)
 matplotlib.rcParams['figure.facecolor'] = '#00000000'
@@ -71,8 +78,21 @@ plt.xlabel('Horsepower value')
 plt.ylabel('Number of cars')
 plt.show()
 
-matplotlib.rcParams['font.size'] = 8
-matplotlib.rcParams['figure.figsize'] = (10,6)
 df.hist(bins=15,xlabelsize=7)
 plt.show()
 
+plt.pie(categories_avail2, labels=categories_avail2.index, autopct='%1.1f%%')
+plt.title('Plot of Different Vehicle type')
+plt.show()
+
+#Machine Learning development to predict the selling price of car
+
+#Removing columns that does not contribute to the selling price
+df = df.drop(['Model','Latest_Launch'], axis = 1) 
+
+#Data encoding using dummy values
+df=pd.get_dummies(df,drop_first=True)
+print('Dataset with categorical values encoded')
+print(df)
+
+#Splitting dataset into features and target variables
