@@ -68,21 +68,18 @@ matplotlib.rcParams['figure.facecolor'] = '#00000000'
 
 #plotting a bar chat for the groups of cars 
 plt.pie(categories_avail, labels=categories_avail.index)
-plt.title('Plot of Different Categories / Manufacturers of Cars')
+plt.title('Plot of Different Categories / Manufacturers of Cars',size = 25)
 plt.show()
 
 # Creating histogram for continuous numerical variable
 plt.hist(df['Horsepower'])
-plt.title('Distribution of different Horsepower')
-plt.xlabel('Horsepower value')
-plt.ylabel('Number of cars')
-plt.show()
-
-df.hist(bins=15,xlabelsize=7)
+plt.title('Distribution of different Horsepower',size = 25)
+plt.xlabel('Horsepower value',size = 18)
+plt.ylabel('Number of cars',size = 18)
 plt.show()
 
 plt.pie(categories_avail2, labels=categories_avail2.index, autopct='%1.1f%%')
-plt.title('Plot of Different Vehicle type')
+plt.title('Plot of Different Vehicle type', size = 25)
 plt.show()
 
 #Machine Learning development to predict the selling price of car
@@ -107,7 +104,7 @@ model.fit(features,target)
 #plotting the feature importance
 feat_importances = pd.Series(model.feature_importances_, index=features.columns)
 feat_importances.nlargest(10).plot(kind='barh')
-plt.title('Feature importance for the highest 10 variables')
+plt.title('Feature importance for the highest 10 variables',size = 25)
 plt.show()
 
 #Performing data scaling
@@ -130,3 +127,10 @@ model.fit(x_train,y_train)
 
 #predict the values for the training dataset
 y_pred = model.predict(x_train)
+
+#Plotting the line of best fit
+plt.scatter(y_train,y_pred)
+plt.title('Plotting actual target vs predicted target',size = 25)
+plt.xlabel("Target (y_train)", size = 18)
+plt.ylabel("Predicted (y_hat)", size = 18)
+plt.show()
