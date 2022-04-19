@@ -32,6 +32,10 @@ print(df.describe())
 df_sorted = df.sort_values(by = 'Engine_size', ascending = False) #sorting the data by Engine size
 print(df_sorted.head()) 
 
+# Correlation with Price_in_thousands
+df_corr = df.corr()['Price_in_thousands'][:-1]
+print(df_corr)
+
 # Replacing space in column names
 df.columns = df.columns.str.replace(' ', '_') #using the replace function
 
@@ -58,3 +62,9 @@ plt.title('Distribution of different Horsepower')
 plt.xlabel('Horsepower value')
 plt.ylabel('Number of cars')
 plt.show()
+
+matplotlib.rcParams['font.size'] = 8
+matplotlib.rcParams['figure.figsize'] = (10,6)
+df.hist(bins=15,xlabelsize=7)
+plt.show()
+
