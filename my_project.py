@@ -116,3 +116,7 @@ sc = StandardScaler()
 sc.fit(features)
 input_scaled = sc.transform(features)
 
+#Splitting data into training and test set
+from sklearn.model_selection import train_test_split
+
+x_train,x_test,y_train,y_test = train_test_split(input_scaled,target,test_size = 0.2, random_state=100)
