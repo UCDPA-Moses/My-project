@@ -122,6 +122,7 @@ from sklearn.model_selection import train_test_split
 x_train,x_test,y_train,y_test = train_test_split(input_scaled,target,test_size = 0.2, random_state=100)
 
 #Building linear regression model for the selling price
+
 #fit the model for training set
 from sklearn.linear_model import LinearRegression
 model = LinearRegression()
