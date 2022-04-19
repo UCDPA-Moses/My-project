@@ -14,33 +14,41 @@ df = pd.read_csv("https://raw.githubusercontent.com/UCDPA-Moses/UCDPA_Moses/main
 print(df.head())
 
 #Data Exploratory
+print("Information about the dataset")
 print(df.info())
 
+print("Description of the dataset")
 print(df.describe())
 
+print("Shape, i.e Rows by Columns")
 print(df.shape)
 
 print(df.duplicated) #checking for duplicates
 
-# Dropping unnecessary columns
-drop_cols = ['Vehicle_type']
-df = df.drop(drop_cols, axis = 1)
+# Replacing space in column names
+df.columns = df.columns.str.replace(' ', '_') #using the replace function
 
-print(df.describe())
+total_missing=df.isna().sum().sum() #checking for missing values in the dataset
+print("Total missing values are:", total_missing)
+
+#Replacing missing data with the mean of the column
+print("Replacing missing data with the mean of the column")
+df.fillna(df.mean(),inplace=True)
+total_missing=df.isna().sum().sum() #checking for missing values in the dataset
+print("Total missing values are:", total_missing)
 
 # Sorting all the data in the dataset with respexct to Engine size
 df_sorted = df.sort_values(by = 'Engine_size', ascending = False) #sorting the data by Engine size
+print("sorting the data by Engine size")
 print(df_sorted.head()) 
 
 # Correlation with Price_in_thousands
 df_corr = df.corr()['Price_in_thousands'][:-1]
 print(df_corr)
 
-# Replacing space in column names
-df.columns = df.columns.str.replace(' ', '_') #using the replace function
-
 # Counting all the cars in the dataset by its category
 categories_avail = df.groupby('Manufacturer').size()
+print("The different categories / manufacturers of cars in this dataset are:")
 print(categories_avail)
 
 
