@@ -151,6 +151,7 @@ plt.show()
 
 from sklearn.metrics import r2_score, mean_absolute_error,mean_squared_error
 print("R_square value is: ", r2_score(y_test,y_pred_test))
+print('MAE:',mean_absolute_error(y_test, y_pred_test))
 print("MSE is: ", mean_squared_error(y_test,y_pred_test))
 print("RMSE is: ", np.sqrt(mean_squared_error(y_test,y_pred_test)))
 
@@ -174,5 +175,6 @@ plt.show()
 
 #  Performance Metrics
 print("R_square value is: ", r2_score(y_test,predictions))
+print('MAE:', mean_absolute_error(y_test, predictions))
 print('MSE:', mean_squared_error(y_test, predictions))
 print('RMSE:', np.sqrt(mean_squared_error(y_test, predictions)))
